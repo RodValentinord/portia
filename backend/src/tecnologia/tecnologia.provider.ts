@@ -8,5 +8,10 @@ export class TecnologiaProvider {
     async obterTodas(): Promise<Tecnologia[]>{
         return this.prisma.tecnologia.findMany()
     }
+    async obterDestaques(): Promise<Tecnologia[]>{
+        return this.prisma.tecnologia.findMany({
+            where: { destaque: true},
+        })
+    }
 
 }
