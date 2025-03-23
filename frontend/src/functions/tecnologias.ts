@@ -1,20 +1,13 @@
-import { Tecnologia } from "@core";
-import { httpGet } from "./api";
+import { Tecnologia } from "@core"
+import { httpGet } from "./api"
 
 export async function obterTecnologias() {
-	const resposta = await httpGet("tecnologias");
-
-	console.log("🔍 Resposta da API de tecnologias:", resposta);
-
-	// Corrige: garante que tecnologias seja sempre um array
-	const tecnologias: Tecnologia[] = Array.isArray(resposta)
-		? resposta
-		: resposta?.data ?? [];
+	const tecnologias: Tecnologia[] = await httpGet("/tecnologias")
 
 	return {
 		todas: tecnologias,
 		get destaques() {
-			return tecnologias.filter((tecnologia) => tecnologia.destaque);
+			return tecnologias.filter((tecnologia) => tecnologia.destaque)
 		},
-	};
+	}
 }
