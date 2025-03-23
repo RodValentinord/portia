@@ -1,0 +1,7 @@
+POST https://rodolfosuporte.app.n8n.cloud/webhook/assistente-pessoal
+Content-Type: application/json
+
+{
+    "chatID": "123642",
+    "chatInput": "todas"
+}
